@@ -29,6 +29,7 @@ Config = {
 ```
 /addxp - Increase your xp
 /removexp - Lower your XP (Can only go to the base for your current level)
+/hunter - Example to check if current job is this one and you are on duty.
 ```
 
 #### INSTALATION
