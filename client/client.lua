@@ -4,17 +4,6 @@ TriggerEvent("getMWGJobSystem", function(jobsystem)
     JobSystem = jobsystem
 end)
 
---[[
-JobSystem.getJobInfo - Returns the following attributes
-jobName
-jobID
-totalXp
-level
-nextLevel
-nextLevelXp
-currentLevelMinXp
-]]
-
 RegisterCommand("hunter", function(source, args, rawCommand)
     local jobDetails = JobSystem.getJobInfo(source)
     if jobDetails.jobName == Config.JobName and JobSystem.isOnDuty then
@@ -35,26 +24,42 @@ end)
 
 
 -- Available Client Events
-RegisterNetEvent("mwg_examplejob:onduty", function()
-    print('On-Duty Called')
+AddEventHandler("mwg_jobsystem:onDutyEvent", function(jobName)
+    if jobName == Config.JobName then
+        print('On-Duty Called')
+    end
 end)
 
-RegisterNetEvent("mwg_examplejob:offduty", function()
-    print('Off-Duty Called')
+AddEventHandler("mwg_jobsystem:offDutyEvent", function(jobName)
+    if jobName == Config.JobName then
+        print('Off-Duty Called')
+    end
 end)
 
-RegisterNetEvent("mwg_examplejob:addXp", function()
-    print("XP Added")
+AddEventHandler("mwg_jobsystem:ExpGainEvent", function()
+    local jobDetails = JobSystem.getJobInfo(source)
+    if jobDetails.jobName == Config.JobName then
+        print("XP Added")
+    end
 end)
 
-RegisterNetEvent("mwg_examplejob:remXp", function()
-    print("XP Removed")
+AddEventHandler("mwg_jobsystem:ExpLossEvent", function()
+    local jobDetails = JobSystem.getJobInfo(source)
+    if jobDetails.jobName == Config.JobName then
+        print("XP Removed")
+    end
 end)
 
-RegisterNetEvent("mwg_examplejob:levelup", function()
-    print("Level Up")
+AddEventHandler("mwg_jobsystem:levelUpEvent", function()
+    local jobDetails = JobSystem.getJobInfo(source)
+    if jobDetails.jobName == Config.JobName then
+        print("Level Up")
+    end
 end)
 
-RegisterNetEvent("mwg_examplejob:maxlevel", function()
-    print("Reached Max Level")
+AddEventHandler("mwg_jobsystem:maxLevelEvent", function()
+    local jobDetails = JobSystem.getJobInfo(source)
+    if jobDetails.jobName == Config.JobName then
+        print("Reached Max Level")
+    end
 end)

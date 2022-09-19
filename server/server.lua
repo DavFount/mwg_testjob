@@ -5,5 +5,4 @@ TriggerEvent("getMWGJobSystem", function(jobsystem)
 end)
 
 -- Registers your job with Job System
-JobSystem.registerJob(Config.JobName, Config.Description, Config.OnDuty, Config.OffDuty, Config.AddXP, Config.RemoveXP,
-    Config.LevelUp, Config.MaxLevel)
+JobSystem.registerJob(Config.JobName, Config.Description)
